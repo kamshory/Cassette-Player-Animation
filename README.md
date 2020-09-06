@@ -15,3 +15,4 @@ var cassette = new Cassette(song, duration, maxDuration, false);
 - song : audio object
 - duration : song duration (in second)
 - maxDuration : maximum duration of the cassette (in second), maximum 2700
+- reverse : true for reversed direction
