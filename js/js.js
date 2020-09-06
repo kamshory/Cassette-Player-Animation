@@ -502,7 +502,7 @@ img2.src = 'css/img/cs_back.png';
 var img3 = new Image();
 img3.src = 'css/img/cs_front.png';
 var song = new Audio();
-song.src = 'songs/dave-and-ava.mp3';
+song.src = 'songs/BlueDucks_FourFlossFiveSix.mp3';
 song.onloadedmetadata = function() {
 	setTimeout(
 	function(){
