@@ -485,10 +485,7 @@ window.onload = function()
 		obj.setAttribute('data-status', status);
 	});
 
-
 	draw();
-
-
 }
 var duration = 0;
 var maxDuration = 0;
