@@ -490,7 +490,7 @@ window.onload = function()
 
 
 }
-var totalLength = 0;
+var duration = 0;
 var maxDuration = 0;
 
 var img1 = new Image();
@@ -506,12 +506,12 @@ song.src = 'songs/BlueDucks_FourFlossFiveSix.mp3';
 song.onloadedmetadata = function() {
 	setTimeout(
 	function(){
-	totalLength = song.duration;
+	duration = song.duration;
 	maxDuration = song.duration;
 	cassette.setDuration(song.duration);
 	cassette.setMaxDuration(song.duration);
 	}, 100);
 };
-var cassette = new Cassette(song, totalLength, maxDuration, false);
+var cassette = new Cassette(song, duration, maxDuration, false);
 
 
