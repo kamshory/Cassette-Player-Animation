@@ -1,6 +1,6 @@
 # Cassette-Player-Animation
 
-Cassette player animation is a web-based animation using canvas. This animation is suitable for use in song player applications.
+Cassette player animation is a web-based animation using canvas. This animation is suitable for use in song player applications. In this cassette player animation, the reel speed depends on the thickness of the tape on the reel. This will make the animation even more realistic.
 
 - File Type : all audio type supported by the browser
 - Maximum Duration : 90 minutes
