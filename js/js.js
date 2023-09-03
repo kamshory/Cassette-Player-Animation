@@ -501,6 +501,9 @@ img2.src = 'css/img/cs_back.png';
 
 let img3 = new Image();
 img3.src = 'css/img/cs_front.png';
+
+
+
 let song = new Audio();
 song.src = 'songs/BlueDucks_FourFlossFiveSix.mp3';
 song.onloadedmetadata = function() {
