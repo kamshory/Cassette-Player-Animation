@@ -26,7 +26,7 @@ function draw()
 	{
 		cassette.updatePosition(cassette.getDeltaTime());
 	}
-	
+
 	let pos = cassette.getSongPosition();
 	cassette.reel1.drawReel(pos);
 	cassette.reel2.drawReel(pos);
@@ -328,6 +328,19 @@ window.onload = function()
 		}
 		obj.setAttribute('data-status', status);
 	});
+
+	document.addEventListener("keydown", function (e) {
+	e.preventDefault();
+	e.stopPropagation();
+    if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
+      document.querySelector(".button-play").click();
+    } else if (e.code == "ArrowLeft" || e.keyCode == 37) {
+      document.querySelector(".button-rewind").click();
+    } else if (e.code == "ArrowRight" || e.keyCode == 39) {
+      document.querySelector(".button-fast-forward").click();
+    }
+
+  });
 
 	let blobs = [];
 	let finish = 0;
