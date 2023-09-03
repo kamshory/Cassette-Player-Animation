@@ -330,17 +330,16 @@ window.onload = function()
 	});
 
 	document.addEventListener("keydown", function (e) {
-	e.preventDefault();
-	e.stopPropagation();
-    if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
-      document.querySelector(".button-play").click();
-    } else if (e.code == "ArrowLeft" || e.keyCode == 37) {
-      document.querySelector(".button-rewind").click();
-    } else if (e.code == "ArrowRight" || e.keyCode == 39) {
-      document.querySelector(".button-fast-forward").click();
-    }
-
-  });
+		if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
+		document.querySelector(".button-play").click();
+		e.preventDefault();
+		e.stopPropagation();
+		} else if (e.code == "ArrowLeft" || e.keyCode == 37) {
+		document.querySelector(".button-rewind").click();
+		} else if (e.code == "ArrowRight" || e.keyCode == 39) {
+		document.querySelector(".button-fast-forward").click();
+		}
+	});
 
 	let blobs = [];
 	let finish = 0;
