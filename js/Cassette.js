@@ -53,7 +53,7 @@ class Cassette {
 
         this.getDeltaTime = function () {
             let currentTime = (new Date()).getTime();
-            deltaTime = (currentTime - this.lastTime) / 1000;
+            let deltaTime = (currentTime - this.lastTime) / 1000;
             this.lastTime = currentTime;
             return deltaTime;
 
