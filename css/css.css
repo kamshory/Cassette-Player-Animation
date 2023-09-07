@@ -1,12 +1,12 @@
 body{
 	margin:0;
 	padding:0;
-	background-color:#EEEEEE;
 	position: relative;
 	width: 100%;
 	height: 100%;
-	overflow: hidden;
 	background: url(img/wall-400.jpg) center center;
+	background-color:#EEEEEE;
+	overflow: hidden;
 }
 .container{
 	width:1106px;
@@ -206,10 +206,10 @@ body{
 	padding:0;
 	border:none;
 	background-color:transparent;
+	width:68px;
+	position:relative;
 }
-.buttons button{
-	width:80px;
-}
+
 .buttons button div{
 	transition: all 0.05s ease;
 }
@@ -255,9 +255,8 @@ body{
 	background: linear-gradient(#333333, #303030);
 	text-align:center;
 }
-.buttons button{
-	position:relative;
-}
+
+
 .buttons button .icon{
 	text-align:center;
 }
@@ -267,7 +266,7 @@ body{
 	height:20px;
 	padding:4px 0;
 	vertical-align:top;
-	align:center;
+	text-align:center;
 	position: relative;
 	opacity:0.7;
 }
@@ -298,6 +297,7 @@ body{
   border-color: transparent white transparent transparent;
   left:6px;
 }
+
 .button-fast-forward .icon span::before{
   content: '';
   display: inline-block;
@@ -316,6 +316,33 @@ body{
   border-color: transparent transparent transparent white;
   left:6px;
 }
+
+.button-scan .icon span::before{
+	content: '';
+	display: block;
+	position: absolute;
+	border-style: solid;
+	width: 9px;
+	height: 9px;
+	border: 2px solid white;
+	border-radius: 50%;
+	left:-1px;
+	top: 4px;
+  }
+  .button-scan .icon span::after{
+	content: '';
+	display: inline-block;
+	position: absolute;
+	width: 4px;
+	height: 8px;
+	background-color: white;
+	transform: rotate(-45deg);
+	left:10px;
+	top: 13px;
+  }
+  
+  
+
 .button-pause .icon span::before{
   content: '';
   display: inline-block;

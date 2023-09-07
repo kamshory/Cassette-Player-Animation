@@ -219,6 +219,7 @@ window.onload = function()
 			status = 'on';
 			document.querySelector('.button-rewind').setAttribute('data-status', 'off');
 			document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
+			document.querySelector('.button-scan').setAttribute('data-status', 'off');		
 			document.querySelector('.button-pause').setAttribute('data-status', 'off');
 			document.querySelector('.button-stop').setAttribute('data-status', 'off');
 			cassette.play();
@@ -239,6 +240,7 @@ window.onload = function()
 			status = 'on';
 			document.querySelector('.button-play').setAttribute('data-status', 'off');
 			document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
+			document.querySelector('.button-scan').setAttribute('data-status', 'off');
 			document.querySelector('.button-pause').setAttribute('data-status', 'off');
 			document.querySelector('.button-stop').setAttribute('data-status', 'off');
 			cassette.pause();
@@ -268,6 +270,7 @@ window.onload = function()
 			status = 'on';
 			document.querySelector('.button-play').setAttribute('data-status', 'off');
 			document.querySelector('.button-rewind').setAttribute('data-status', 'off');
+			document.querySelector('.button-scan').setAttribute('data-status', 'off');
 			document.querySelector('.button-pause').setAttribute('data-status', 'off');
 			document.querySelector('.button-stop').setAttribute('data-status', 'off');
 			cassette.pause();
@@ -279,6 +282,29 @@ window.onload = function()
 			{
 				cassette.fastForwardOn();
 			}
+		}
+		obj.setAttribute('data-status', status);
+	});
+
+	document.querySelector('.button-scan').addEventListener('click', function(e){
+		let obj = document.querySelector('.button-scan');
+		let status = obj.getAttribute('data-status');
+		if(status == 'on')
+		{
+			status = 'off';
+			cassette.fastForwardOff();
+			cassette.rewindOff();
+		}
+		else
+		{
+			status = 'on';
+			document.querySelector('.button-play').setAttribute('data-status', 'off');
+			document.querySelector('.button-rewind').setAttribute('data-status', 'off');
+			document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
+			document.querySelector('.button-pause').setAttribute('data-status', 'off');
+			document.querySelector('.button-stop').setAttribute('data-status', 'off');
+			cassette.pause();
+			cassette.scan();
 		}
 		obj.setAttribute('data-status', status);
 	});
@@ -513,6 +539,28 @@ function processBlobs(blobs)
 		{
 			document.querySelector('.layer1').classList.add('off');
 			document.querySelector('.layer1').classList.remove('on');
+		}
+		cassette.onFoundSong = function(songIndex)
+		{
+			cassette.play();
+			let obj = document.querySelector('.button-play');
+			let status = obj.getAttribute('data-status');
+			if(status == 'on')
+			{
+				status = 'off';
+				cassette.pause();
+			}
+			else
+			{
+				status = 'on';
+				document.querySelector('.button-rewind').setAttribute('data-status', 'off');
+				document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
+				document.querySelector('.button-scan').setAttribute('data-status', 'off');		
+				document.querySelector('.button-pause').setAttribute('data-status', 'off');
+				document.querySelector('.button-stop').setAttribute('data-status', 'off');
+				cassette.play();
+			}
+			obj.setAttribute('data-status', status);
 		}
 		connectToAnalizer(songAll, document.querySelector('#canvasanalyzer'));
 		initCassette();

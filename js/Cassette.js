@@ -18,6 +18,18 @@ class Cassette {
         this.lastTime = (new Date()).getTime();
         this.timeInterval = setInterval(function () { }, 100000);
 
+        this.getSongIndex = function(pos)
+        {
+            for(let i = 0; i<that.sources.length; i++) // NOSONAR
+            {
+                if(that.sources[i].start <= pos && that.sources[i].end >= pos)
+                {
+                    return i;
+                }
+            }
+            return 0;
+        }
+
         this.setDuration = function (duration) {
             this.duration = duration;
             this.reel1.setDuration(duration);
@@ -42,6 +54,10 @@ class Cassette {
         this.onPlay = function (pos) {
         };
         this.onPause = function (pos) {
+        };
+        this.onFoundSong = function(songIndex)
+        {
+
         };
         this.pause = function () {
             this.fastForwardOff();
@@ -91,6 +107,20 @@ class Cassette {
                 if (that.getPosition() >= that.duration) {
                     clearInterval(that.timeInterval);
                 }
+            }, 10);
+        };
+        this.scan = function () {
+            clearInterval(that.timeInterval);
+            that.timeInterval = setInterval(function () {
+                that.updatePosition(0.5);
+                let pos = that.getPosition();
+                that.song.currentTime = pos;
+                let songIndex = that.getSongIndex(pos)
+                if (songIndex != that.index) {
+                    clearInterval(that.timeInterval);
+                    that.onFoundSong(songIndex);
+                }
+                that.index = songIndex;
             }, 10);
         };
         this.fastForwardOff = function () {
