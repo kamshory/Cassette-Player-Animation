@@ -4,13 +4,41 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Cassette Player Animation</title>
+<link rel="stylesheet" type="text/css" href="css/dot-matrx.css">
 <link rel="stylesheet" type="text/css" href="css/css.css">
+<script src="js/Rheel.js"></script>
+<script src="js/Cassette.js"></script>
 <script type="text/javascript" src="js/js.js"></script>
 </head>
 <body>
+
+
+	<div class="rotate-x">
+		<div class="panel"></div>
+	</div>
+	<div class="flower1"></div>
+	<div class="vase1"></div>
+	
 <div class="container">
+	<div class="tv">
+		<div class="screen">
+			<canvas id="canvasanalyzer" width="320" height="160"></canvas>
+			<div class="layer1 off">
+				
+			</div>
+			<div class="layer2">
+				<div class="line1 dot-matrix"></div>
+				<div class="line2 dot-matrix"></div>
+				<div class="line3"></div>
+			</div>
+			
+
+		</div>
+	</div>
 	<div class="cassette-player">
 		<div class="cols main">
+
+
 			<div class="cassette-container">
 				<div class="cassette">
 					<canvas id="canvas" width="586" height="379"></canvas>
@@ -79,6 +107,8 @@
 		</div>
 
 	</div>
+
+	
 </div>
 </body>
 </html>
