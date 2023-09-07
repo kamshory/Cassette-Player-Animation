@@ -18,6 +18,16 @@ function imageRotate(image, angle)
 
 let lastPlayTime = (new Date()).getTime();
 
+let canvas = null;
+let ctx = null;
+
+function initCassette()
+{
+	canvas = document.querySelector('#canvas');
+	ctx = canvas.getContext('2d');
+
+}
+
 function draw()
 {
 	// Conversion from centimeter to pixel need a scale
@@ -33,8 +43,6 @@ function draw()
 	cassette.reel1.drawReel(pos);
 	cassette.reel2.drawReel(pos);
 
-	let canvas = document.querySelector('#canvas');
-	let ctx = canvas.getContext('2d');
 	
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -445,7 +453,6 @@ function connectToAnalizer(audio, canvas)
 	analyser.fftSize = 256;
 	
 	bufferLength = analyser.frequencyBinCount;
-	console.log(bufferLength);
 	
 	dataArray = new Uint8Array(bufferLength);
 	 	
@@ -508,6 +515,7 @@ function processBlobs(blobs)
 			document.querySelector('.layer1').classList.remove('on');
 		}
 		connectToAnalizer(songAll, document.querySelector('#canvasanalyzer'));
+		initCassette();
 		draw();	
 	};
 }
