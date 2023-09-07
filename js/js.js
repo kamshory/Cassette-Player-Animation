@@ -16,6 +16,8 @@ function imageRotate(image, angle)
 	return canv;
 }
 
+let lastPlayTime = (new Date()).getTime();
+
 function draw()
 {
 	// Conversion from centimeter to pixel need a scale
@@ -27,7 +29,7 @@ function draw()
 		cassette.updatePosition(cassette.getDeltaTime());
 	}
 
-	let pos = cassette.getSongPosition();
+	let pos = cassette.getPosition();
 	cassette.reel1.drawReel(pos);
 	cassette.reel2.drawReel(pos);
 
@@ -117,8 +119,12 @@ function draw()
 		cassette.position = maxDuration;
 	}
 	let source = getSong(sources, pos);
-	document.querySelector('.line1').innerText = basename(source.src, '/');
+	if(typeof source != 'undefined' && typeof source.src != 'undefined')
+	{
+		document.querySelector('.line1').innerText = basename(source.src, '/');
+	}
 	document.querySelector('.line2').innerText = pos.toFixed(2) + ' / '+cassette.duration.toFixed(2);
+	renderFrame();
 	window.requestAnimationFrame(draw);
 }
 
@@ -128,7 +134,7 @@ function basename(str, sep) {
 
 function getSong(src, pos)
 {
-	for(let i = 0; i<src.length; i++)
+	for(let i = 0; i<src.length; i++) // NOSONAR
 	{
 		if(src[i].start <= pos && src[i].end >= pos)
 		{
@@ -369,6 +375,109 @@ window.onload = function()
 
 let songAll;
 
+function Counter()
+{
+	this.currentTime = 0;
+	this.lastPlayTime = 0;
+	this.lastPlayPosition = 0;
+	this.started = false;
+	this.paused = false;
+	this.lastPosition = 0;
+
+	this.start = function(position)
+	{
+		this.lastPlayPosition = position;
+		this.lastPlayTime = (new Date()).getTime();
+		this.started = true;
+		this.paused = false;
+	}
+
+	this.pause = function(pos)
+	{
+		this.paused = true;
+	}
+
+	this.getPosition = function()
+	{
+		if(!this.started)
+		{
+			return 0;
+		}
+		if(this.paused)
+		{
+			return this.lastPosition;
+		}
+		let time = (new Date()).getTime() - this.lastPlayTime;
+		let pos = (time/1000) + this.lastPlayPosition;
+		if(pos < 0)
+		{
+			pos = 0;
+		}
+		this.lastPosition = pos;
+		return pos;
+	}
+	
+}
+
+let context = new AudioContext();
+let src = null;
+let analyser = null;
+let canvasAnalyzer = null;
+let ctxAnalyzer = null;
+let dataArray = null;
+let bufferLength = 4096;
+let barWidth = 10;
+let barHeight = 20;
+
+function connectToAnalizer(audio, canvas)
+{
+	canvasAnalyzer = canvas;
+	src = context.createMediaElementSource(audio);
+	analyser = context.createAnalyser();
+	
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+	ctxAnalyzer = canvas.getContext("2d");
+	
+	src.connect(analyser);
+	analyser.connect(context.destination);
+	
+	analyser.fftSize = 256;
+	
+	bufferLength = analyser.frequencyBinCount;
+	console.log(bufferLength);
+	
+	dataArray = new Uint8Array(bufferLength);
+	 	
+	barWidth = (canvasAnalyzer.width / bufferLength) * 2.5;
+	
+}
+
+
+
+function renderFrame() {
+  let x = 0;
+
+  analyser.getByteFrequencyData(dataArray);
+
+  ctxAnalyzer.fillStyle = "#121116";
+  ctxAnalyzer.fillRect(0, 0, canvasAnalyzer.width, canvasAnalyzer.height);
+
+  for (let i = 0; i < bufferLength; i++) {
+	let barHeight = dataArray[i];
+	
+	let r = barHeight + (25 * (i/bufferLength));
+	let g = 250 * (i/bufferLength);
+	let b = 50;
+
+	ctxAnalyzer.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+	ctxAnalyzer.fillRect(x, canvasAnalyzer.height - barHeight, barWidth, barHeight);
+
+	x += barWidth + 1;
+  }
+}
+
+
 function processBlobs(blobs)
 {
 	let offset = 0;
@@ -398,6 +507,7 @@ function processBlobs(blobs)
 			document.querySelector('.layer1').classList.add('off');
 			document.querySelector('.layer1').classList.remove('on');
 		}
+		connectToAnalizer(songAll, document.querySelector('#canvasanalyzer'));
 		draw();	
 	};
 }
