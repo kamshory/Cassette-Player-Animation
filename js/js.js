@@ -201,7 +201,62 @@ function getPont(label, point1, point2, radius)
 	return point;
 }
 
+function setAttr(selector, name, value)
+{
+	document.querySelector(selector).setAttribute(name, value)
+}
 
+function flagPlayOn()
+{
+	setAttr('.button-rewind', 'data-status', 'off');
+	setAttr('.button-fast-forward', 'data-status', 'off');
+	setAttr('.button-scan', 'data-status', 'off');		
+	setAttr('.button-pause', 'data-status', 'off');
+	setAttr('.button-stop', 'data-status', 'off');
+}
+
+function flagRewindOn()
+{
+	setAttr('.button-play', 'data-status', 'off');
+	setAttr('.button-fast-forward', 'data-status', 'off');
+	setAttr('.button-scan', 'data-status', 'off');
+	setAttr('.button-pause', 'data-status', 'off');
+	setAttr('.button-stop', 'data-status', 'off');
+}
+
+function flagFastForwardOn()
+{
+	setAttr('.button-play', 'data-status', 'off');
+	setAttr('.button-rewind', 'data-status', 'off');
+	setAttr('.button-scan', 'data-status', 'off');
+	setAttr('.button-pause', 'data-status', 'off');
+	setAttr('.button-stop', 'data-status', 'off');
+}
+
+function flagScanOn()
+{
+	setAttr('.button-play', 'data-status', 'off');
+	setAttr('.button-rewind', 'data-status', 'off');
+	setAttr('.button-fast-forward', 'data-status', 'off');
+	setAttr('.button-pause', 'data-status', 'off');
+	setAttr('.button-stop', 'data-status', 'off');
+}
+
+function flagPauseOn()
+{
+	setAttr('.button-play', 'data-status', 'off');
+	setAttr('.button-rewind', 'data-status', 'off');
+	setAttr('.button-fast-forward', 'data-status', 'off');
+	setAttr('.button-stop', 'data-status', 'off');
+}
+
+function flagStopOn()
+{
+	setAttr('.button-play', 'data-status', 'off');
+	setAttr('.button-rewind', 'data-status', 'off');
+	setAttr('.button-fast-forward', 'data-status', 'off');
+	setAttr('.button-stop', 'data-status', 'off');
+}
 
 window.onload = function()
 {
@@ -217,11 +272,7 @@ window.onload = function()
 		else
 		{
 			status = 'on';
-			document.querySelector('.button-rewind').setAttribute('data-status', 'off');
-			document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
-			document.querySelector('.button-scan').setAttribute('data-status', 'off');		
-			document.querySelector('.button-pause').setAttribute('data-status', 'off');
-			document.querySelector('.button-stop').setAttribute('data-status', 'off');
+			flagPlayOn();
 			cassette.play();
 		}
 		obj.setAttribute('data-status', status);
@@ -238,11 +289,7 @@ window.onload = function()
 		else
 		{
 			status = 'on';
-			document.querySelector('.button-play').setAttribute('data-status', 'off');
-			document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
-			document.querySelector('.button-scan').setAttribute('data-status', 'off');
-			document.querySelector('.button-pause').setAttribute('data-status', 'off');
-			document.querySelector('.button-stop').setAttribute('data-status', 'off');
+			flagRewindOn();
 			cassette.pause();
 			if(cassette.reversed)
 			{
@@ -268,11 +315,7 @@ window.onload = function()
 		else
 		{
 			status = 'on';
-			document.querySelector('.button-play').setAttribute('data-status', 'off');
-			document.querySelector('.button-rewind').setAttribute('data-status', 'off');
-			document.querySelector('.button-scan').setAttribute('data-status', 'off');
-			document.querySelector('.button-pause').setAttribute('data-status', 'off');
-			document.querySelector('.button-stop').setAttribute('data-status', 'off');
+			flagFastForwardOn();
 			cassette.pause();
 			if(cassette.reversed)
 			{
@@ -298,11 +341,7 @@ window.onload = function()
 		else
 		{
 			status = 'on';
-			document.querySelector('.button-play').setAttribute('data-status', 'off');
-			document.querySelector('.button-rewind').setAttribute('data-status', 'off');
-			document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
-			document.querySelector('.button-pause').setAttribute('data-status', 'off');
-			document.querySelector('.button-stop').setAttribute('data-status', 'off');
+			flagScanOn();
 			cassette.pause();
 			cassette.scan();
 		}
@@ -321,10 +360,7 @@ window.onload = function()
 		else
 		{
 			status = 'on';
-			document.querySelector('.button-play').setAttribute('data-status', 'off');
-			document.querySelector('.button-rewind').setAttribute('data-status', 'off');
-			document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
-			document.querySelector('.button-stop').setAttribute('data-status', 'off');
+			flagPauseOn();
 			cassette.pause();
 			cassette.rewindOff();
 			cassette.fastForwardOff();
@@ -343,10 +379,7 @@ window.onload = function()
 		else
 		{
 			status = 'on';
-			document.querySelector('.button-play').setAttribute('data-status', 'off');
-			document.querySelector('.button-rewind').setAttribute('data-status', 'off');
-			document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
-			document.querySelector('.button-stop').setAttribute('data-status', 'off');
+			flagStopOn();
 			cassette.pause();
 			cassette.rewindOff();
 			cassette.fastForwardOff();
@@ -553,11 +586,7 @@ function processBlobs(blobs)
 			else
 			{
 				status = 'on';
-				document.querySelector('.button-rewind').setAttribute('data-status', 'off');
-				document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
-				document.querySelector('.button-scan').setAttribute('data-status', 'off');		
-				document.querySelector('.button-pause').setAttribute('data-status', 'off');
-				document.querySelector('.button-stop').setAttribute('data-status', 'off');
+				flagPlayOn();
 				cassette.play();
 			}
 			obj.setAttribute('data-status', status);
@@ -569,6 +598,17 @@ function processBlobs(blobs)
 }
 
 let songs = [];
+let duration = 0;
+let maxDuration = 0;
+let img1 = new Image();
+img1.src = 'css/img/cs_wheel.png';
+let img2 = new Image();
+img2.src = 'css/img/cs_back.png';
+let img3 = new Image();
+img3.src = 'css/img/cs_front.png';
+let song;
+let cassette;
+
 let sources = [
 	{src:'songs/Lagu 0010.mp3'},
 	{src:'songs/Lagu 0011.mp3'},
@@ -579,23 +619,3 @@ let sources = [
 	{src:'songs/Lagu 0018.mp3'},
 	{src:'songs/Lagu 0019.mp3'}
 ];
-
-
-let duration = 0;
-let maxDuration = 0;
-
-let img1 = new Image();
-img1.src = 'css/img/cs_wheel.png';
-
-let img2 = new Image();
-img2.src = 'css/img/cs_back.png';
-
-let img3 = new Image();
-img3.src = 'css/img/cs_front.png';
-
-let song;
-let cassette;
-
-
-
-

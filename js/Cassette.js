@@ -89,7 +89,7 @@ class Cassette {
         this.rewindOn = function () {
             clearInterval(that.timeInterval);
             that.timeInterval = setInterval(function () {
-                that.updatePosition(-0.5);
+                that.updatePosition(-1);
                 that.song.currentTime = that.getPosition();
                 if (that.pos <= 0) {
                     clearInterval(that.timeInterval);
@@ -102,7 +102,7 @@ class Cassette {
         this.fastForwardOn = function () {
             clearInterval(that.timeInterval);
             that.timeInterval = setInterval(function () {
-                that.updatePosition(0.5);
+                that.updatePosition(1);
                 that.song.currentTime = that.getPosition();
                 if (that.getPosition() >= that.duration) {
                     clearInterval(that.timeInterval);
@@ -112,7 +112,7 @@ class Cassette {
         this.scan = function () {
             clearInterval(that.timeInterval);
             that.timeInterval = setInterval(function () {
-                that.updatePosition(0.5);
+                that.updatePosition(1);
                 let pos = that.getPosition();
                 that.song.currentTime = pos;
                 let songIndex = that.getSongIndex(pos)
