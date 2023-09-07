@@ -18,6 +18,16 @@ function imageRotate(image, angle)
 
 let lastPlayTime = (new Date()).getTime();
 
+let canvas = null;
+let ctx = null;
+
+function initCassette()
+{
+	canvas = document.querySelector('#canvas');
+	ctx = canvas.getContext('2d');
+
+}
+
 function draw()
 {
 	// Conversion from centimeter to pixel need a scale
@@ -33,8 +43,6 @@ function draw()
 	cassette.reel1.drawReel(pos);
 	cassette.reel2.drawReel(pos);
 
-	let canvas = document.querySelector('#canvas');
-	let ctx = canvas.getContext('2d');
 	
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -193,7 +201,62 @@ function getPont(label, point1, point2, radius)
 	return point;
 }
 
+function setAttr(selector, name, value)
+{
+	document.querySelector(selector).setAttribute(name, value)
+}
 
+function flagPlayOn()
+{
+	setAttr('.button-rewind', 'data-status', 'off');
+	setAttr('.button-fast-forward', 'data-status', 'off');
+	setAttr('.button-scan', 'data-status', 'off');		
+	setAttr('.button-pause', 'data-status', 'off');
+	setAttr('.button-stop', 'data-status', 'off');
+}
+
+function flagRewindOn()
+{
+	setAttr('.button-play', 'data-status', 'off');
+	setAttr('.button-fast-forward', 'data-status', 'off');
+	setAttr('.button-scan', 'data-status', 'off');
+	setAttr('.button-pause', 'data-status', 'off');
+	setAttr('.button-stop', 'data-status', 'off');
+}
+
+function flagFastForwardOn()
+{
+	setAttr('.button-play', 'data-status', 'off');
+	setAttr('.button-rewind', 'data-status', 'off');
+	setAttr('.button-scan', 'data-status', 'off');
+	setAttr('.button-pause', 'data-status', 'off');
+	setAttr('.button-stop', 'data-status', 'off');
+}
+
+function flagScanOn()
+{
+	setAttr('.button-play', 'data-status', 'off');
+	setAttr('.button-rewind', 'data-status', 'off');
+	setAttr('.button-fast-forward', 'data-status', 'off');
+	setAttr('.button-pause', 'data-status', 'off');
+	setAttr('.button-stop', 'data-status', 'off');
+}
+
+function flagPauseOn()
+{
+	setAttr('.button-play', 'data-status', 'off');
+	setAttr('.button-rewind', 'data-status', 'off');
+	setAttr('.button-fast-forward', 'data-status', 'off');
+	setAttr('.button-stop', 'data-status', 'off');
+}
+
+function flagStopOn()
+{
+	setAttr('.button-play', 'data-status', 'off');
+	setAttr('.button-rewind', 'data-status', 'off');
+	setAttr('.button-fast-forward', 'data-status', 'off');
+	setAttr('.button-stop', 'data-status', 'off');
+}
 
 window.onload = function()
 {
@@ -209,10 +272,7 @@ window.onload = function()
 		else
 		{
 			status = 'on';
-			document.querySelector('.button-rewind').setAttribute('data-status', 'off');
-			document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
-			document.querySelector('.button-pause').setAttribute('data-status', 'off');
-			document.querySelector('.button-stop').setAttribute('data-status', 'off');
+			flagPlayOn();
 			cassette.play();
 		}
 		obj.setAttribute('data-status', status);
@@ -229,10 +289,7 @@ window.onload = function()
 		else
 		{
 			status = 'on';
-			document.querySelector('.button-play').setAttribute('data-status', 'off');
-			document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
-			document.querySelector('.button-pause').setAttribute('data-status', 'off');
-			document.querySelector('.button-stop').setAttribute('data-status', 'off');
+			flagRewindOn();
 			cassette.pause();
 			if(cassette.reversed)
 			{
@@ -258,10 +315,7 @@ window.onload = function()
 		else
 		{
 			status = 'on';
-			document.querySelector('.button-play').setAttribute('data-status', 'off');
-			document.querySelector('.button-rewind').setAttribute('data-status', 'off');
-			document.querySelector('.button-pause').setAttribute('data-status', 'off');
-			document.querySelector('.button-stop').setAttribute('data-status', 'off');
+			flagFastForwardOn();
 			cassette.pause();
 			if(cassette.reversed)
 			{
@@ -271,6 +325,25 @@ window.onload = function()
 			{
 				cassette.fastForwardOn();
 			}
+		}
+		obj.setAttribute('data-status', status);
+	});
+
+	document.querySelector('.button-scan').addEventListener('click', function(e){
+		let obj = document.querySelector('.button-scan');
+		let status = obj.getAttribute('data-status');
+		if(status == 'on')
+		{
+			status = 'off';
+			cassette.fastForwardOff();
+			cassette.rewindOff();
+		}
+		else
+		{
+			status = 'on';
+			flagScanOn();
+			cassette.pause();
+			cassette.scan();
 		}
 		obj.setAttribute('data-status', status);
 	});
@@ -287,10 +360,7 @@ window.onload = function()
 		else
 		{
 			status = 'on';
-			document.querySelector('.button-play').setAttribute('data-status', 'off');
-			document.querySelector('.button-rewind').setAttribute('data-status', 'off');
-			document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
-			document.querySelector('.button-stop').setAttribute('data-status', 'off');
+			flagPauseOn();
 			cassette.pause();
 			cassette.rewindOff();
 			cassette.fastForwardOff();
@@ -309,10 +379,7 @@ window.onload = function()
 		else
 		{
 			status = 'on';
-			document.querySelector('.button-play').setAttribute('data-status', 'off');
-			document.querySelector('.button-rewind').setAttribute('data-status', 'off');
-			document.querySelector('.button-fast-forward').setAttribute('data-status', 'off');
-			document.querySelector('.button-stop').setAttribute('data-status', 'off');
+			flagStopOn();
 			cassette.pause();
 			cassette.rewindOff();
 			cassette.fastForwardOff();
@@ -445,7 +512,6 @@ function connectToAnalizer(audio, canvas)
 	analyser.fftSize = 256;
 	
 	bufferLength = analyser.frequencyBinCount;
-	console.log(bufferLength);
 	
 	dataArray = new Uint8Array(bufferLength);
 	 	
@@ -507,12 +573,42 @@ function processBlobs(blobs)
 			document.querySelector('.layer1').classList.add('off');
 			document.querySelector('.layer1').classList.remove('on');
 		}
+		cassette.onFoundSong = function(songIndex)
+		{
+			cassette.play();
+			let obj = document.querySelector('.button-play');
+			let status = obj.getAttribute('data-status');
+			if(status == 'on')
+			{
+				status = 'off';
+				cassette.pause();
+			}
+			else
+			{
+				status = 'on';
+				flagPlayOn();
+				cassette.play();
+			}
+			obj.setAttribute('data-status', status);
+		}
 		connectToAnalizer(songAll, document.querySelector('#canvasanalyzer'));
+		initCassette();
 		draw();	
 	};
 }
 
 let songs = [];
+let duration = 0;
+let maxDuration = 0;
+let img1 = new Image();
+img1.src = 'css/img/cs_wheel.png';
+let img2 = new Image();
+img2.src = 'css/img/cs_back.png';
+let img3 = new Image();
+img3.src = 'css/img/cs_front.png';
+let song;
+let cassette;
+
 let sources = [
 	{src:'songs/Lagu 0010.mp3'},
 	{src:'songs/Lagu 0011.mp3'},
@@ -523,23 +619,3 @@ let sources = [
 	{src:'songs/Lagu 0018.mp3'},
 	{src:'songs/Lagu 0019.mp3'}
 ];
-
-
-let duration = 0;
-let maxDuration = 0;
-
-let img1 = new Image();
-img1.src = 'css/img/cs_wheel.png';
-
-let img2 = new Image();
-img2.src = 'css/img/cs_back.png';
-
-let img3 = new Image();
-img3.src = 'css/img/cs_front.png';
-
-let song;
-let cassette;
-
-
-
-

@@ -34,23 +34,19 @@ class Rheel {
                 if (this.reversed) {
                     this.delta = this.getDelta(position);
                 }
-
                 else {
                     this.delta = this.getDelta(this.duration - position);
                 }
                 this.radius = reelRadius + this.delta;
             }
             let circumference = Math.acos(-1) * 2 * (this.radius);
-
             let deltaTime = position - this.lastTime;
             this.lastTime = position;
-
             this.angularSpeed = (deltaTime * 50) / circumference;
 
             if (this.reversed) {
                 this.angle += this.angularSpeed;
             }
-
             else {
                 this.angle -= this.angularSpeed;
             }
