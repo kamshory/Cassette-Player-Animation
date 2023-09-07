@@ -1,397 +1,385 @@
-body{
-	margin:0;
-	padding:0;
-	position: relative;
-	width: 100%;
-	height: 100%;
-	background: url(img/wall-400.jpg) center center;
-	background-color:#EEEEEE;
-	overflow: hidden;
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url(img/wall-400.jpg) center center;
+  background-color: #EEEEEE;
+  overflow: hidden;
 }
-.container{
-	width:1106px;
-	margin:20px auto;
-	padding-top: 100px;
+
+.container {
+  width: 1106px;
+  margin: 20px auto;
+  padding-top: 100px;
 }
-.tv{
-	width: 586px;
-	height: 380px;
-	margin: auto;
-	padding-top: 4px;
-	background: url(img/led-tv.png) no-repeat center top;
+
+.tv {
+  width: 586px;
+  height: 380px;
+  margin: auto;
+  padding-top: 4px;
+  background: url(img/led-tv.png) no-repeat center top;
 }
-.tv .screen{
-	margin: 0 auto;
-	width: 570px;
-	height: 330px;
-	color: #FFFFFF;
-	padding: 20px 24px;
-	position: relative;
-	box-sizing: border-box;
+.tv .screen {
+  margin: 0 auto;
+  width: 570px;
+  height: 330px;
+  color: #FFFFFF;
+  padding: 20px 24px;
+  position: relative;
+  box-sizing: border-box;
 }
-.layer1{
-	position: absolute;
-	height: 300px;
-	width: 300px;
-	z-index: 0;
-	right: 20px;
+
+.layer1 {
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  z-index: 0;
+  right: 20px;
 }
-.layer1.on{
-	background: url(img/dancing-on.gif);
+.layer1.on {
+  background: url(img/dancing-on.gif);
 }
-.layer1.off{
-	background: url(img/dancing-off.gif);
+.layer1.off {
+  background: url(img/dancing-off.gif);
 }
-.layer2{
-	position: absolute;
-	width: inherit;
-	height: inherit;
+
+.layer2 {
+  position: absolute;
+  width: inherit;
+  height: inherit;
 }
 
 .rotate-x .panel {
-	transform: perspective(1500px) rotateX( 75deg );
-	background: url(img/tile.webp) center center;
-	width: 140%;
-	height: 800px;
-	position: absolute;
-	left: -20%;
-	z-index: -1;
-	bottom: -380px;
+  transform: perspective(1500px) rotateX(75deg);
+  background: url(img/tile.webp) center center;
+  width: 140%;
+  height: 800px;
+  position: absolute;
+  left: -20%;
+  z-index: -1;
+  bottom: -380px;
 }
 
-.flower1{
-	width: 220px;
-	left: 20px;
-	height: 450px;
-	position: absolute;
-	background: url(img/rose.png) no-repeat;
+.flower1 {
+  width: 220px;
+  left: 20px;
+  height: 450px;
+  position: absolute;
+  background: url(img/rose.png) no-repeat;
 }
 
-.vase1{
-	width: 380px;
-	right: 20px;
-	height: 351px;
-	position: absolute;
-	background: url(img/vase1.png) no-repeat right;
-	bottom: 40px;
+.vase1 {
+  width: 380px;
+  right: 20px;
+  height: 351px;
+  position: absolute;
+  background: url(img/vase1.png) no-repeat right;
+  bottom: 40px;
 }
 
-
-.cassette-player{
-}
-.speaker-container{
-	background:
-      linear-gradient(217deg, rgba(0,0,0,.8), rgba(0,0,0,0) 70.71%),
-      linear-gradient(127deg, rgba(0,0,0,.8), rgba(0,0,0,0) 70.71%),
-      linear-gradient(336deg, rgba(0,0,0,.8), rgba(0,0,0,0) 70.71%);
-}
-.speaker{
-	background:url(img/new-speaker-240.png) no-repeat center center;
-}
-.cassette-container{
-	background:
-      linear-gradient(217deg, rgba(0,0,0,.8), rgba(0,0,0,0) 70.71%),
-      linear-gradient(127deg, rgba(0,0,0,.8), rgba(0,0,0,0) 70.71%),
-      linear-gradient(336deg, rgba(0,0,0,.8), rgba(0,0,0,0) 70.71%);
+.speaker-container {
+  background: linear-gradient(217deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70.71%), linear-gradient(127deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70.71%), linear-gradient(336deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70.71%);
 }
 
-.line1{
-	color: #00CC00;
-	font-size: 24px;
-	padding-bottom: 5px;
+.speaker {
+  background: url(img/new-speaker-240.png) no-repeat center center;
 }
 
-#canvasanalyzer{
-	width: 320px;
-	height: 160px;
-	position: absolute; 
-	top: 160px;
-	left: 12px;
+.cassette-container {
+  background: linear-gradient(217deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70.71%), linear-gradient(127deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70.71%), linear-gradient(336deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70.71%);
 }
 
-.line2{
-	color: #FF2222;
-	font-size: 18px;
+.line1 {
+  color: #00CC00;
+  font-size: 24px;
+  padding-bottom: 5px;
 }
 
-@media screen and (min-width:1200px)
-{
-	.container{
-		width:1106px;
-		margin:20px auto;
-	}
-	.cassette-player{
-		overflow:hidden;
-		position:relative;
-		width:1106px;
-		border-radius:4px;
-	}
-	.main{
-		box-sizing:border-box;
-		padding-left:260px;
-		padding-right:260px;
-		box-shadow:inset 0px 0px -9px #000000;
-		background:url(img/bg.jpg) no-repeat center center;
-	}
-	.cols{
-		height:467px;
-	}
-	.speaker{
-		width:260px;
-		height:400px;
-	}
-	.cassette-container{
-		height:467px;
-	}
-	.speaker-container{
-		width:260px;
-		position:absolute;
-		border-radius:4px;
-	}
-	.speaker-container-1{
-		top:0;
-		left:0;
-		box-shadow:0px 0px 9px #111111;
-	}
-	.speaker-container-2{
-		top:0;
-		right:0;
-	}
-}
-@media screen and (max-width:1200px)
-{
-	.container{
-		width:590px;
-		margin:20px auto;
-	}
-	.cassette-player{
-		overflow:hidden;
-		position:relative;
-		width:590px;
-		border-radius:4px;
-	}
-	.main{
-		box-sizing:border-box;
-		background:url(img/bg.jpg) no-repeat center center;
-	}
-	.cols{
-	}
-	.speaker{
-		height:400px;
-	}
-	.cassette-container{
-		padding:0 2px;
-		height:467px;
-		border-radius:4px;
-		overflow:hidden;
-	}
-	.speaker-container{
-		width:295px;
-		border-radius:4px;
-	}
-	.speaker-container-1{
-		float:left;
-	}
-	.speaker-container-2{
-		float:right;
-	}
-	.speaker-container-2::after{
-		content:'';
-		clear:both;
-	}
+#canvasanalyzer {
+  width: 320px;
+  height: 160px;
+  position: absolute;
+  top: 160px;
+  left: 12px;
 }
 
-
-.buttons button{
-	padding:0;
-	border:none;
-	background-color:transparent;
-	width:68px;
-	position:relative;
+.line2 {
+  color: #FF2222;
+  font-size: 18px;
 }
 
-.buttons button div{
-	transition: all 0.05s ease;
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1106px;
+    margin: 20px auto;
+  }
+  .cassette-player {
+    overflow: hidden;
+    position: relative;
+    width: 1106px;
+    border-radius: 4px;
+  }
+  .main {
+    box-sizing: border-box;
+    padding-left: 260px;
+    padding-right: 260px;
+    box-shadow: inset 0px 0px -9px #000000;
+    background: url(img/bg.jpg) no-repeat center center;
+  }
+  .cols {
+    height: 467px;
+  }
+  .speaker {
+    width: 260px;
+    height: 400px;
+  }
+  .cassette-container {
+    height: 467px;
+  }
+  .speaker-container {
+    width: 260px;
+    position: absolute;
+    border-radius: 4px;
+  }
+  .speaker-container-1 {
+    top: 0;
+    left: 0;
+    box-shadow: 0px 0px 9px #111111;
+  }
+  .speaker-container-2 {
+    top: 0;
+    right: 0;
+  }
 }
-.buttons button .button-line-1{
-	background: linear-gradient(#404040, #747474);
-	height:5px;
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 590px;
+    margin: 20px auto;
+  }
+  .cassette-player {
+    overflow: hidden;
+    position: relative;
+    width: 590px;
+    border-radius: 4px;
+  }
+  .main {
+    box-sizing: border-box;
+    background: url(img/bg.jpg) no-repeat center center;
+  }
+  .speaker {
+    height: 400px;
+  }
+  .cassette-container {
+    padding: 0 2px;
+    height: 467px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .speaker-container {
+    width: 295px;
+    border-radius: 4px;
+  }
+  .speaker-container-1 {
+    float: left;
+  }
+  .speaker-container-2 {
+    float: right;
+  }
+  .speaker-container-2::after {
+    content: "";
+    clear: both;
+  }
 }
-.buttons button[data-status="on"] .button-line-1{
-	background: linear-gradient(#444444, #777777);
-	height:15px;
+.buttons {
+  padding: 10px 0;
+  background: linear-gradient(#333333, #303030);
+  text-align: center;
+}
+.buttons button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  width: 68px;
+  position: relative;
+}
+.buttons button div {
+  transition: all 0.05s ease;
+}
+.buttons button .button-line-1 {
+  background: linear-gradient(#404040, #747474);
+  height: 5px;
+}
+.buttons button[data-status=on] .button-line-1 {
+  background: linear-gradient(#444444, #777777);
+  height: 15px;
+}
+.buttons button .button-line-2 {
+  background: linear-gradient(#C8C8C8, #808080);
+  height: 7px;
+  border-top: 1px solid #666666;
+  border-bottom: 1px solid #595959;
+}
+.buttons button[data-status=on] .button-line-2 {
+  background: linear-gradient(#CCCCCC, #888888);
+  height: 6px;
+  border-top: 1px solid #696969;
+  border-bottom: 1px solid #555555;
+}
+.buttons button .button-line-3 {
+  background: linear-gradient(#444444, #888888, #555555);
+  height: 20px;
+}
+.buttons button[data-status=on] .button-line-3 {
+  background: linear-gradient(#363636, #666666, #484848);
+  height: 12px;
+}
+.buttons button .button-line-4 {
+  height: 3px;
+}
+.buttons button[data-status=on] .button-line-4 {
+  height: 2px;
+}
+.buttons button .icon {
+  text-align: center;
+}
+.buttons button .icon span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  padding: 4px 0;
+  vertical-align: top;
+  text-align: center;
+  position: relative;
+  opacity: 0.7;
 }
 
-.buttons button .button-line-2{
-	background: linear-gradient(#C8C8C8, #808080);
-	height:7px;
-	border-top:1px solid #666666;
-	border-bottom:1px solid #595959;
-}
-.buttons button[data-status="on"] .button-line-2{
-	background: linear-gradient(#CCCCCC, #888888);
-	height:6px;
-	border-top:1px solid #696969;
-	border-bottom:1px solid #555555;
-}
-
-.buttons button .button-line-3{
-	background: linear-gradient(#444444, #888888, #555555);
-	height:20px;
-}
-.buttons button[data-status="on"] .button-line-3{
-	background: linear-gradient(#363636, #666666, #484848);
-	height:12px;
-}
-.buttons button .button-line-4{
-	height:3px;
-}
-
-.buttons button[data-status="on"] .button-line-4{
-	height:2px;
-}
-.buttons{
-	padding:10px 0;
-	background: linear-gradient(#333333, #303030);
-	text-align:center;
-}
-
-
-.buttons button .icon{
-	text-align:center;
-}
-.buttons button .icon span{
-	display:inline-block;
-	width:20px;
-	height:20px;
-	padding:4px 0;
-	vertical-align:top;
-	text-align:center;
-	position: relative;
-	opacity:0.7;
-}
-.button-play .icon span::after{
-  content: '';
+.button-play .icon span::after {
+  content: "";
   display: inline-block;
   position: absolute;
   border-style: solid;
   border-width: 10px 0 10px 15px;
   border-color: transparent transparent transparent white;
-  left:3px;
+  left: 3px;
 }
-.button-rewind .icon span::before{
-  content: '';
+
+.button-rewind .icon span::before {
+  content: "";
   display: inline-block;
   position: absolute;
   border-style: solid;
   border-width: 10px 12px 10px 0px;
   border-color: transparent white transparent transparent;
-  left:-1px;
+  left: -1px;
 }
-.button-rewind .icon span::after{
-  content: '';
+.button-rewind .icon span::after {
+  content: "";
   display: inline-block;
   position: relative;
   border-style: solid;
   border-width: 10px 12px 10px 0px;
   border-color: transparent white transparent transparent;
-  left:6px;
+  left: 6px;
 }
 
-.button-fast-forward .icon span::before{
-  content: '';
+.button-fast-forward .icon span::before {
+  content: "";
   display: inline-block;
   position: absolute;
   border-style: solid;
   border-width: 10px 0 10px 12px;
   border-color: transparent transparent transparent white;
-  left:-1px;
+  left: -1px;
 }
-.button-fast-forward .icon span::after{
-  content: '';
+.button-fast-forward .icon span::after {
+  content: "";
   display: inline-block;
   position: relative;
   border-style: solid;
   border-width: 10px 0 10px 12px;
   border-color: transparent transparent transparent white;
-  left:6px;
+  left: 6px;
 }
 
-.button-scan .icon span::before{
-	content: '';
-	display: block;
-	position: absolute;
-	border-style: solid;
-	width: 8px;
-	height: 8px;
-	border: 2px solid white;
-	border-radius: 50%;
-	left:-1px;
-	top: 6px;
-  }
-  .button-scan .icon span::after{
-	content: '';
-	display: inline-block;
-	position: absolute;
-	width: 4px;
-	height: 8px;
-	background-color: white;
-	transform: rotate(-45deg);
-	left:10px;
-	top: 13px;
-  }
-
-.button-pause .icon span::before{
-  content: '';
-  display: inline-block;
+.button-scan .icon span::before {
+  content: "";
+  display: block;
   position: absolute;
-  left:2px;
-  width:5px;
-  height:17px;
-  background-color:white;
+  border-style: solid;
+  width: 8px;
+  height: 8px;
+  border: 2px solid white;
+  border-radius: 50%;
+  left: -1px;
+  top: 6px;
 }
-.button-pause .icon span::after{
-  content: '';
+.button-scan .icon span::after {
+  content: "";
   display: inline-block;
   position: absolute;
-  right:2px;
-  width:5px;
-  height:17px;
-  background-color:white;
-}
-.button-stop .icon span::before{
-  content: '';
-  display: inline-block;
-  position: absolute;
-  left:1px;
-  width:17px;
-  height:17px;
-  background-color:white;
-}
-.button-open .icon span::after{
-  content: '';
-  display: inline-block;
-  position: absolute;
-  top:8px;
-  right:1px;
-  width:6px;
-  height:6px;
-  border-radius:3px;
-  border:1px solid white;
-}
-.button-open .icon span::before{
-  content: '';
-  display: inline-block;
-  position: absolute;
-  top:8px;
-  left:1px;
-  width:6px;
-  height:6px;
-  border-radius:3px;
-  border:1px solid white;
+  width: 4px;
+  height: 8px;
+  background-color: white;
+  transform: rotate(-45deg);
+  left: 10px;
+  top: 13px;
 }
 
-.button-line-1, .button-line-2, .button-line-3, .button-line-4{
-	cursor:pointer;
+.button-pause .icon span::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 2px;
+  width: 5px;
+  height: 17px;
+  background-color: white;
+}
+.button-pause .icon span::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  right: 2px;
+  width: 5px;
+  height: 17px;
+  background-color: white;
 }
 
+.button-stop .icon span::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 1px;
+  width: 17px;
+  height: 17px;
+  background-color: white;
+}
+
+.button-open .icon span::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 8px;
+  right: 1px;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  border: 1px solid white;
+}
+.button-open .icon span::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: 1px;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  border: 1px solid white;
+}
+
+.button-line-1, .button-line-2, .button-line-3, .button-line-4 {
+  cursor: pointer;
+}/*# sourceMappingURL=css.css.map */
