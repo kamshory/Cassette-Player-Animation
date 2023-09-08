@@ -8,11 +8,6 @@ let weekday = [
     "Friday",
     "Saturday"
   ];
-let hEl;
-let mEl;
-let sEl;
-let dateEl;
-let dayEl;
 let dialLines;
 let clockEl;
 

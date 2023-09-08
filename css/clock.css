@@ -31,10 +31,10 @@
     position: absolute;
     z-index: 5;
     width: 4px;
-    height: 65px;
+    height: 60px;
     background: #333;
-    top: 35px;
-    transform-origin: 50% 65px;
+    top: 40px;
+    transform-origin: 50% 60px;
     left: 50%;
     margin-left: -2px;
     border-top-left-radius: 50%;
