@@ -260,6 +260,8 @@ function flagStopOn()
 
 window.onload = function()
 {
+	initClock();
+	
 
 	document.querySelector('.button-play').addEventListener('click', function(e){
 		let obj = document.querySelector('.button-play');
@@ -610,6 +612,7 @@ let song;
 let cassette;
 
 let sources = [
+	{src:'songs/Lagu 0021.mp3'},
 	{src:'songs/Lagu 0010.mp3'},
 	{src:'songs/Lagu 0011.mp3'},
 	{src:'songs/Lagu 0012.mp3'},

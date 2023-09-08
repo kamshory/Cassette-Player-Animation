@@ -1,0 +1,144 @@
+.clock-placeholder{
+    position: absolute;
+    right: 100px;
+}
+.clock {
+    background: #ececec;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 14px solid #333;
+    position: relative;
+    box-shadow: 0 20px 30px -20px rgba(0,0,0,0.8);
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    z-index: 10;
+    box-shadow: 0 2px 4px -1px black;
+  }
+  
+  .hour-hand {
+    position: absolute;
+    z-index: 5;
+    width: 4px;
+    height: 65px;
+    background: #333;
+    top: 35px;
+    transform-origin: 50% 65px;
+    left: 50%;
+    margin-left: -2px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+  }
+  
+  .minute-hand {
+    position: absolute;
+    z-index: 6;
+    width: 4px;
+    height: 80px;
+    background: #666;
+    top: 20px;
+    left: 50%;
+    margin-left: -2px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    transform-origin: 50% 80px;
+  }
+  
+  .second-hand {
+    position: absolute;
+    z-index: 7;
+    width: 2px;
+    height: 90px;
+    background: red;
+    top: 10px;
+    left: 50%;
+    margin-left: -1px;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    transform-origin: 50% 90px;
+  }
+  
+  span {
+    display: inline-block;
+    position: absolute;
+    color: #333;
+    font-size: 22px;
+    font-family: 'Poiret One';
+    font-weight: 700;
+    z-index: 4;
+  }
+  
+  .h12 {
+    top: 20px;
+    left: 50%;
+    margin-left: -9px;
+  }
+  .h3 {
+    top: 86px;
+    right: 20px;
+  }
+  .h6 {
+    bottom: 20px;
+    left: 50%;
+    margin-left: -5px;
+  }
+  .h9 {
+    left: 20px;
+    top: 86px;
+  }
+  
+  .diallines {
+    position: absolute;
+    z-index: 2;
+    width: 1px;
+    height: 10px;
+    background: #666;
+    left: 50%;
+    margin-left: -1px;
+    transform-origin: 50% 100px;
+  }
+  .diallines:nth-of-type(5n) {
+    position: absolute;
+    z-index: 2;
+    width: 2px;
+    height: 14px;
+    background: #666;
+    left: 50%;
+    margin-left: -1px;
+    transform-origin: 50% 100px;
+  }
+  
+  .info {
+    position: absolute;
+    width: 80px;
+    height: 20px;
+    border-radius: 7px;
+    background: #ccc;
+    text-align: center;
+    line-height: 20px;
+    color: #000;
+    font-size: 12px;
+    top: 200px;
+    font-weight: 700;
+    z-index: 3;
+    letter-spacing: 3px;
+    margin-left: -40px;
+    left: 50%;
+  }
+  .date {
+      top: 60px;
+    }
+  .day {
+      top: 120px;
+  }
